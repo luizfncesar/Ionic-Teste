@@ -5,13 +5,55 @@
 </ion-header>
 
 <ion-content padding>
-  <h2>Welcome to Ionic!</h2>
-  <p>
-    This starter project comes with simple tabs-based layout for apps
-    that are going to primarily use a Tabbed UI.
-  </p>
-  <p>
-    Take a look at the <code>src/pages/</code> directory to add or change tabs,
-    update any existing page or create new pages.
-  </p>
+  <div class="uk-flex uk-flex-center uk-flex-middle uk-background-muted uk-height-viewport" data-uk-height-viewport *ngIf="showContent">
+    <div class="uk-width-medium uk-padding-small">
+      <!-- login -->
+      <form autocomplete="off" [formGroup]="form" (ngSubmit)="onSubmit()">
+        <fieldset class="uk-fieldset">
+          <div class="uk-margin-small">
+            <div class="uk-inline uk-width-1-1">
+              <span class="uk-form-icon uk-form-icon-flip" data-uk-icon="icon: user"></span>
+              <input class="uk-input uk-border-pill" required placeholder="Username" type="text" formControlName="email">
+            </div>
+          </div>
+          <div class="uk-margin-small">
+            <div class="uk-inline uk-width-1-1">
+              <span class="uk-form-icon uk-form-icon-flip" data-uk-icon="icon: lock"></span>
+              <input class="uk-input uk-border-pill" required placeholder="Password" type="password" formControlName="senha">
+            </div>
+          </div>
+          <div class="uk-margin-bottom">
+            <button class="uk-button uk-button-primary uk-border-pill uk-width-1-1" type="button" (click)="onSubmit()">LOG IN</button>
+          </div>
+        </fieldset>
+      </form>
+      <!-- /login -->
+  
+      <!-- recover password -->
+      <form class="toggle-class" action="login-dark.html" hidden>
+        <div class="uk-margin-small">
+          <div class="uk-inline uk-width-1-1">
+            <span class="uk-form-icon uk-form-icon-flip" data-uk-icon="icon: mail"></span>
+            <input class="uk-input uk-border-pill" placeholder="E-mail" required type="text">
+          </div>
+        </div>
+        <div class="uk-margin-bottom">
+          <button type="submit" class="uk-button uk-button-primary uk-border-pill uk-width-1-1">SEND PASSWORD</button>
+        </div>
+      </form>
+      <!-- /recover password -->
+      
+      <!-- action buttons -->
+      <div>
+        <div class="uk-text-center">
+          <a class="uk-link-reset uk-text-small toggle-class" data-uk-toggle="target: .toggle-class ;animation: uk-animation-fade">Forgot your password?</a>
+          <a class="uk-link-reset uk-text-small toggle-class" data-uk-toggle="target: .toggle-class ;animation: uk-animation-fade" hidden><span data-uk-icon="arrow-left"></span> Back to Login</a>
+        </div>
+      </div>
+      <!-- action buttons -->
+    </div>
+  
+  </div>
 </ion-content>
+
+
