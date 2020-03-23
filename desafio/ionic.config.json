@@ -1,7 +1,8 @@
 {
   "name": "desafio",
   "integrations": {
-    "capacitor": {}
+    "capacitor": {},
+    "cordova": {}
   },
   "type": "ionic-angular"
 }

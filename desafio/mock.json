@@ -1,52 +1,67 @@
 {
-	"usuarios": [
-		{
+  "usuarios": [
+    {
       "id": 0,
-			"nome": "vinicius do teste",
-			"dataNascimento": "01/01/2020",
-			"cpf": "21312312312",
-			"email": "vinicius@teste.com.br",
-			"senha": "123"
-		},
-		{
+      "nome": "vinicius do teste",
+      "dataNascimento": "01/01/2020",
+      "cpf": "21312312312",
+      "email": "vinicius@teste.com.br",
+      "senha": "123",
+      "auth": true
+    },
+    {
       "id": 1,
-			"nome": "joao do teste",
-			"dataNascimento": "02/02/2020",
-			"cpf": "21312312777",
-			"email": "joao@teste.com.br",
-			"senha": "1234"
-		},
-		{
+      "nome": "joao do teste",
+      "dataNascimento": "02/02/2020",
+      "cpf": "21312312777",
+      "email": "joao@teste.com.br",
+      "senha": "1234",
+      "auth": false
+    },
+    {
       "id": 2,
-			"nome": "carlos do teste",
-			"dataNascimento": "03/03/2020",
-			"cpf": "21312312000",
-			"email": "carlos@teste.com.br",
-			"senha": "123"
-		},
-		{
+      "nome": "carlos do teste",
+      "dataNascimento": "03/03/2020",
+      "cpf": "21312312000",
+      "email": "carlos@teste.com.br",
+      "senha": "123",
+      "auth": false
+    },
+    {
       "id": 3,
-			"nome": "maria do teste",
-			"dataNascimento": "04/04/2020",
-			"cpf": "21312312233",
-			"email": "maria@teste.com.br",
-			"senha": "12345"
-		},
-		{
+      "nome": "maria do teste",
+      "dataNascimento": "04/04/2020",
+      "cpf": "21312312233",
+      "email": "maria@teste.com.br",
+      "senha": "12345",
+      "auth": false
+    },
+    {
       "id": 4,
-			"nome": "pedro do teste",
-			"dataNascimento": "05/05/2020",
-			"cpf": "21312312555",
-			"email": "pedro@teste.com.br",
-			"senha": "12"
-		},
-		{
+      "nome": "pedro do teste",
+      "dataNascimento": "05/05/2020",
+      "cpf": "21312312555",
+      "email": "pedro@teste.com.br",
+      "senha": "12",
+      "auth": false
+    },
+    {
       "id": 5,
-			"nome": "luiz do teste",
-			"dataNascimento": "06/06/2020",
-			"cpf": "21312312909",
-			"email": "luiz@teste.com.br",
-			"senha": "111"
-		}
-	]
+      "nome": "luiz do teste",
+      "dataNascimento": "06/06/2020",
+      "cpf": "21312312909",
+      "email": "luiz@teste.com.br",
+      "senha": "111",
+      "auth": false
+    },
+    {
+      "id": 6,
+      "nome": "luiz do teste",
+      "dataNascimento": "06/06/2020",
+      "cpf": "21312312909",
+      "email": "luiz",
+      "senha": "1",
+      "auth": true
+    }
+  ]
 }
