@@ -1,18 +1,17 @@
 import { Component, Injectable } from '@angular/core';
-import { NavController } from 'ionic-angular';
+import { NavController, NavParams, ToastController} from 'ionic-angular';
 import { UserModel } from '../../models/user.model';
 import { UserService } from '../../service/user.service';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+
 // declare var UIkit: any;
 
 @Injectable()
-
 @Component({
   selector: 'page-home',
   templateUrl: 'home.html'
 })
 export class HomePage {
-  form: FormGroup;
+
   showButtonForm: Boolean = false;
   showContent: boolean = false;
   count: number = null;
@@ -23,32 +22,78 @@ export class HomePage {
 		senha: null
   };
 
+  items = [];
+  
+
   constructor(
       public navCtrl: NavController,
+      public navParams: NavParams,
+      public toastCtrl: ToastController,
       private userService: UserService,
-      private readonly formBuilder: FormBuilder,
     ) {
 
+      for (let i = 0; i < 3; i++) {
+        this.items.push( this.items.length );
+      }
+  }
+
+  doInfinite(infiniteScroll) {
+    console.log('Begin async operation');
+
+    setTimeout(() => {
+      for (let i = 0; i < 3; i++) {
+        this.items.push( this.userService.events[i] );
+      }
+
+      console.log('Async operation has ended');
+      infiniteScroll.complete();
+    }, 500);
   }
 
   ngOnInit() {
-    
-    // Fazer localStorage aqui
-    this._getUsers().then(
-      (resp: any) => {
-        this.userService.events = resp;
-        this.count = resp.length;
-        this.usersList = this.userService.events;
-        this.showContent = true;
-        this._createForm(this.userInfo);
-      }
-    )
-      .catch(
-        (error: any) => {
+    this.usersList = this.userService.events;
+  }
+
+  logOut() {
+    let usersListStorage = JSON.parse(window.localStorage.getItem('users_data'));
+    const param = {
+      type: 'logout',
+      username: usersListStorage.email
+    }
+    let user: any = this.userService.checkLogin(this.userService.events, param);
+    if (!user.auth) {
+      this.userService.updateUser(user.id, user).subscribe(
+        () => {
+          this.showContent = false;
+          this._getUsers().then(
+            (resp: any) => {
+              this.userService.events = resp;
+              this.count = resp.length;
+              this.usersList = this.userService.events;
+              window.localStorage.users_data = JSON.stringify(user);
+              this.showContent = true;
+              this.navCtrl.setRoot('LoginPage')
+              // this.notify('Status alterado com sucesso!', 'success');
+            }
+          )
+            .catch(
+              (error) => {
+                // this.notify('Ocorreu um erro inesperado!', 'danger');
+              }
+            );
+        },
+        error => {
           // this.notify('Ocorreu um erro inesperado!', 'danger');
-          console.log(error)
         }
-      )
+      );
+    } else {
+      console.log('Erro ao deslogar');
+    }
+  }
+
+  buttonClick(id) {
+    let myurl = `PerfilPage/${id}`;
+    this.navCtrl.push('PerfilPage', { id: id });
   }
 
   private _getUsers() {
@@ -62,46 +107,6 @@ export class HomePage {
         }
       );
     });
-  }
-
-  private _createForm(info: any) {
-    this.form = this.formBuilder.group({
-      email: [info.email || '', Validators.required], 
-      senha: [info.senha || '', Validators.required]
-    });
-  }
-
-  onSubmit() {
-    debugger
-    const login = this.form.value;
-    if (this.type === 'register') {
-      // this.registerTournament(body);
-    } else {
-      this._getUsers().then(
-        (resp: any) => {
-          this.userService.events = resp;
-          this.count = resp.length;
-          this.usersList = this.userService.events;
-          this.showContent = true;
-          this._checkLogin(this.usersList, login);
-        }
-      )
-        .catch(
-          (error: any) => {
-            // this.notify('Ocorreu um erro inesperado!', 'danger');
-            console.log(error)
-          }
-        )
-    }
-  }
-
-  private _checkLogin(body, login) {
-    for (let index = 0; index < body.length; index++) {
-      if(body[index].email === login.email && body[index].senha === login.senha) {
-        console.log("achei");
-        break;
-      }
-    }
   }
 
   // private notify(msg: string, status: string) {

@@ -5,55 +5,33 @@
 </ion-header>
 
 <ion-content padding>
-  <div class="uk-flex uk-flex-center uk-flex-middle uk-background-muted uk-height-viewport" data-uk-height-viewport *ngIf="showContent">
-    <div class="uk-width-medium uk-padding-small">
-      <!-- login -->
-      <form autocomplete="off" [formGroup]="form" (ngSubmit)="onSubmit()">
-        <fieldset class="uk-fieldset">
-          <div class="uk-margin-small">
-            <div class="uk-inline uk-width-1-1">
-              <span class="uk-form-icon uk-form-icon-flip" data-uk-icon="icon: user"></span>
-              <input class="uk-input uk-border-pill" required placeholder="Username" type="text" formControlName="email">
-            </div>
-          </div>
-          <div class="uk-margin-small">
-            <div class="uk-inline uk-width-1-1">
-              <span class="uk-form-icon uk-form-icon-flip" data-uk-icon="icon: lock"></span>
-              <input class="uk-input uk-border-pill" required placeholder="Password" type="password" formControlName="senha">
-            </div>
-          </div>
-          <div class="uk-margin-bottom">
-            <button class="uk-button uk-button-primary uk-border-pill uk-width-1-1" type="button" (click)="onSubmit()">LOG IN</button>
-          </div>
-        </fieldset>
-      </form>
-      <!-- /login -->
-  
-      <!-- recover password -->
-      <form class="toggle-class" action="login-dark.html" hidden>
-        <div class="uk-margin-small">
-          <div class="uk-inline uk-width-1-1">
-            <span class="uk-form-icon uk-form-icon-flip" data-uk-icon="icon: mail"></span>
-            <input class="uk-input uk-border-pill" placeholder="E-mail" required type="text">
-          </div>
-        </div>
-        <div class="uk-margin-bottom">
-          <button type="submit" class="uk-button uk-button-primary uk-border-pill uk-width-1-1">SEND PASSWORD</button>
-        </div>
-      </form>
-      <!-- /recover password -->
-      
-      <!-- action buttons -->
-      <div>
-        <div class="uk-text-center">
-          <a class="uk-link-reset uk-text-small toggle-class" data-uk-toggle="target: .toggle-class ;animation: uk-animation-fade">Forgot your password?</a>
-          <a class="uk-link-reset uk-text-small toggle-class" data-uk-toggle="target: .toggle-class ;animation: uk-animation-fade" hidden><span data-uk-icon="arrow-left"></span> Back to Login</a>
-        </div>
-      </div>
-      <!-- action buttons -->
-    </div>
-  
+  <h2 text-center>You are logged in!</h2>
+
+  <div margin-top text-center>
+    <button ion-button (click)="logOut()">
+      Log out
+    </button>
   </div>
+  <ion-list-header>
+    <ion-label>-</ion-label>
+    <ion-label>nome</ion-label>
+    <ion-label>data nascimento</ion-label>
+    <ion-label>email</ion-label>
+  </ion-list-header>
+  <ion-list>
+   <ion-item *ngFor="let user of usersList" (click)="buttonClick(user.id)">
+    <ion-label>{{user.id + 1}}</ion-label>
+    <ion-label>{{user.nome}}</ion-label>
+    <ion-label>{{user.dataNascimento}}</ion-label>
+    <ion-label>{{user.email}}</ion-label>
+   </ion-item>
+ </ion-list>
+
+ <ion-infinite-scroll (ionInfinite)="doInfinite($event)">
+    <ion-infinite-scroll-content
+      loadingSpinner="bubbles"
+      loadingText="Loading more data...">
+    </ion-infinite-scroll-content>
+  </ion-infinite-scroll>
+
 </ion-content>
-
-
