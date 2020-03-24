@@ -1,11 +1,14 @@
-import { Component } from '@angular/core';
-import { Platform } from 'ionic-angular';
+import { Component, Injectable } from '@angular/core';
+import { Platform, Events } from 'ionic-angular';
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
-import { ToastController} from 'ionic-angular';
 import { UserService } from '../service/user.service';
 import { TabsPage } from '../pages/tabs/tabs';
+import { Network } from '@ionic-native/network';
+import { NetworkService } from '../service/network.service';
 
+
+@Injectable()
 
 @Component({
   templateUrl: 'app.html'
@@ -13,19 +16,34 @@ import { TabsPage } from '../pages/tabs/tabs';
 export class MyApp {
   rootPage:any = 'LoginPage';
 
-
   constructor(
     platform: Platform, 
     statusBar: StatusBar, 
     splashScreen: SplashScreen,
-    private userService: UserService
+    private userService: UserService,
+    private network: Network,
+    public events: Events,
+    public networkService: NetworkService
   ) {
+
     platform.ready().then(() => {
       // Okay, so the platform is ready and our plugins are available.
       // Here you can do any higher level native things you might need.
       statusBar.styleDefault();
       splashScreen.hide();
 
+      debugger
+      this.networkService.initializeNetworkEvents();
+
+      // Offline event
+      this.events.subscribe('network:offline', () => {
+          alert('network:offline ==> '+this.network.type);    
+      });
+
+      // Online event
+      this.events.subscribe('network:online', () => {
+          alert('network:online ==> '+this.network.type);        
+      });
   
       this._getUsers().then(
         (resp: any) => {
