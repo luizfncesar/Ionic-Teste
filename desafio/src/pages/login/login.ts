@@ -3,7 +3,6 @@ import {IonicPage, NavController, NavParams, ToastController} from 'ionic-angula
 import { UserModel } from '../../models/user.model';
 import { UserService } from '../../service/user.service';
 import { TabsPage } from '../tabs/tabs';
-import { Storage } from '@ionic/storage';
 
 // import Parse from 'parse';
 
@@ -44,8 +43,7 @@ export class LoginPage {
       public navCtrl: NavController,
       public toastCtrl: ToastController,
       public navParams: NavParams,
-      private userService: UserService,
-      private storage: Storage
+      private userService: UserService
     ) {
   }
 

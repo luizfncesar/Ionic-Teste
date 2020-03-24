@@ -92,7 +92,6 @@ export class HomePage {
   }
 
   buttonClick(id) {
-    let myurl = `PerfilPage/${id}`;
     this.navCtrl.push('PerfilPage', { id: id });
   }
 
