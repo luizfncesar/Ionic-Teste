@@ -14,6 +14,9 @@ import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 import { UserService } from '../service/user.service';
 import { IonicStorageModule } from '@ionic/storage';
+import { Network } from '@ionic-native/network';
+import { NetworkService } from '../service/network.service';
+
 
 
 @NgModule({
@@ -39,6 +42,8 @@ import { IonicStorageModule } from '@ionic/storage';
     TabsPage
   ],
   providers: [
+    Network,
+    NetworkService,
     StatusBar,
     SplashScreen,
     UserService,
