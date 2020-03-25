@@ -1,5 +1,5 @@
 import { Component, Injectable } from '@angular/core';
-import { Platform, Events } from 'ionic-angular';
+import { Platform, Events, ToastController } from 'ionic-angular';
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 import { UserService } from '../service/user.service';
@@ -23,16 +23,16 @@ export class MyApp {
     private userService: UserService,
     private network: Network,
     public events: Events,
-    public networkService: NetworkService
+    public networkService: NetworkService,
+    public toast: ToastController,
   ) {
 
     platform.ready().then(() => {
-      // Okay, so the platform is ready and our plugins are available.
-      // Here you can do any higher level native things you might need.
+      this.initializeApp();
+
       statusBar.styleDefault();
       splashScreen.hide();
 
-      debugger
       this.networkService.initializeNetworkEvents();
 
       // Offline event
@@ -82,4 +82,17 @@ export class MyApp {
     });
   }
   
+  
+  initializeApp(): void {
+
+    this.networkService.initializeNetworkEvents();
+
+    this.networkService.getNetworkStatus().subscribe(data => {
+      console.log('platform ready', data);
+      this.toast.create ({
+        message: data + ' ' +  this.networkService.getNetworkType(),
+        duration: 3000,
+      }).present();;
+    });
+  }
 }
