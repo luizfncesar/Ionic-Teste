@@ -5,5 +5,6 @@ export class UserModel {
   cpf: number = null;
   email: string = '';
   senha?: number = null;
+  image?: any = null;
   auth?: Boolean = false;
 }
