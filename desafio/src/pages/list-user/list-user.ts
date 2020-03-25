@@ -2,19 +2,13 @@ import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import { UserService } from '../../service/user.service';
 
-/**
- * Generated class for the PerfilPage page.
- *
- * See https://ionicframework.com/docs/components/#navigation for more info on
- * Ionic pages and navigation.
- */
 
 @IonicPage()
 @Component({
-  selector: 'page-perfil',
-  templateUrl: 'perfil.html',
+  selector: 'page-list-user',
+  templateUrl: 'list-user.html',
 })
-export class PerfilPage {
+export class ListUserPage {
   user: any;
 
   constructor(
@@ -26,11 +20,10 @@ export class PerfilPage {
   }
 
   ionViewDidLoad() {
-    console.log('ionViewDidLoad PerfilPage');
+    console.log('ionViewDidLoad ListUserPage');
   }
 
   ngOnInit() {
-    debugger
     let idPage = this.navParams.get('id');
     this.user = this.userService.events[idPage];
   }

@@ -1,0 +1,31 @@
+
+<ion-header class="landing landing--header">
+  <ion-navbar class="landing__area">
+    <ion-title>Usuário</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding class="landing landing--list-user">
+  <div class="landing__area">
+    <div class="list-user list-user--perfil">
+      <div class="list-user__content">
+        <div class="list-user__image">
+          <div class="list-user__icon"><img class="list-user__media" src="{{user.image}}" alt=""></div>
+        </div>
+      </div>
+      <ion-list class="list-user__area">
+        <div class="list-user__content list-user__content--info">
+          <ion-item class="list-user__content">
+            <ion-label class="list-user__text list-user__text--name"><span>Nome:</span> {{user.nome}}</ion-label>
+          </ion-item>
+          <ion-item class="list-user__content">
+            <ion-label class="list-user__text list-user__text--date"><span>Data Nascimento:</span> {{user.dataNascimento}}</ion-label>
+          </ion-item>
+          <ion-item class="list-user__content">
+            <ion-label class="list-user__text list-user__text--email"><span>Email:</span> {{user.email}}</ion-label>
+          </ion-item>
+        </div>
+      </ion-list>
+    </div>
+  </div>
+</ion-content>

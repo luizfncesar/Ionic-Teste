@@ -1,0 +1,61 @@
+page-list-user {
+
+    .list-user--perfil {
+
+        .content-md {
+            background-color: #f8f8f8;
+        }
+
+        .item-md {
+            background-color: transparent;
+        }
+
+        .list-user__content,
+        .list-user__image {
+            display: block;
+            width: 100%;
+        }
+
+        .list-user__content--info {
+            background: #f3f3f3;
+            padding-right: 16px;
+            padding: 10px 16px 28px 0;
+        }
+
+        .list-user__icon {
+            width: 100%;
+            max-width: 160px;
+            overflow: hidden;
+            border-radius: 100%;
+            border: 4px solid #f3f3f3;
+            margin: 10px auto;
+            box-shadow: 0px 0px 6px 1px #33333394;
+        }
+
+        .list-user__media {
+            display: block;
+            width: 100%;
+        }
+
+        .list-user__text {
+            font-size: 1rem;
+            font-family: "Roboto", "Helvetica Neue", sans-serif;
+            font-weight: 500;
+            line-height: 1.2;
+        }
+
+        .list-user__text--date,
+        .list-user__text--email,
+        .list-user__text--name {
+            text-transform: uppercase;
+            font-size: 1.25rem;
+            font-weight: 600;
+            color: #585858;
+
+            span {
+                color: #563fda;
+                padding-right: 0.25rem;
+            }
+        }
+    }
+}

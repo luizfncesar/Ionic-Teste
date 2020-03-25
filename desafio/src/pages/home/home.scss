@@ -25,6 +25,14 @@ page-home {
             line-height: 1.2;
         }
 
+        .home__text--title {
+            font-size: 2rem;
+            text-transform: uppercase;
+            font-weight: 600;
+            letter-spacing: 0.02em;
+            color: #563fda;
+        }
+
         .home__text--label-null {
             width: 30px;
             max-width: 30px;

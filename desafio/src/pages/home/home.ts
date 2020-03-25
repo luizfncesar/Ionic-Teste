@@ -92,7 +92,7 @@ export class HomePage {
   }
 
   buttonClick(id) {
-    this.navCtrl.push('PerfilPage', { id: id });
+    this.navCtrl.push('ListUserPage', { id: id });
   }
 
   private _getUsers() {

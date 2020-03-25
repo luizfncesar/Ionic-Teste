@@ -57,6 +57,7 @@ export class UserService {
       dataNascimento: user.dataNascimento,
       cpf: user.cpf,
       email: user.email,
+      image: user.image,
       auth: auth,
     }
     return client;
