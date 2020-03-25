@@ -1,42 +1,61 @@
 import { Injectable } from '@angular/core';
-import { AlertController, Events } from 'ionic-angular';
-import { Network } from '@ionic-native/network';
+import { Events } from 'ionic-angular'
+import { Network } from '@ionic-native/network'
+import { BehaviorSubject } from 'rxjs/BehaviorSubject';
+import { Observable } from 'rxjs/Observable';
 
-export enum ConnectionStatusEnum {
+
+export enum ConnectionStatus {
     Online,
     Offline
 }
 
 @Injectable()
-
 export class NetworkService {
 
-  previousStatus;
+    public status: ConnectionStatus;
+    private _status: BehaviorSubject<ConnectionStatus> = new BehaviorSubject(null);
 
-  constructor(public alertCtrl: AlertController, 
-              public network: Network,
-              public eventCtrl: Events) {
+    constructor(
+        public network: Network,
+        public events: Events
+    ) {
+        this.status = ConnectionStatus.Online;
+    }
 
-    console.log('Hello NetworkProvider Provider');
+    public initializeNetworkEvents(): void {
 
-    this.previousStatus = ConnectionStatusEnum.Online;
-    
-  }
+        console.log('Subscribe to onDisconnect events');
+        /* OFFLINE */
+        this.network.onDisconnect().subscribe(() => {
+            if (this.status === ConnectionStatus.Online) {
+                this.setStatus(ConnectionStatus.Offline);
+                console.log("Offline");
 
-  public initializeNetworkEvents(): void {
-      this.network.onDisconnect().subscribe(() => {
-          if (this.previousStatus === ConnectionStatusEnum.Online) {
-              this.eventCtrl.publish('network:offline');
-          }
-          this.previousStatus = ConnectionStatusEnum.Offline;
-      });
-      this.network.onConnect().subscribe(() => {
-          if (this.previousStatus === ConnectionStatusEnum.Offline) {
-              this.eventCtrl.publish('network:online');
-          }
-          this.previousStatus = ConnectionStatusEnum.Online;
-      });
-  }
-  
+            }
+        })
 
+        console.log('Subscribe to onConnect events');
+        /* ONLINE */
+        this.network.onConnect().subscribe(() => {
+            if (this.status === ConnectionStatus.Offline) {
+                this.setStatus(ConnectionStatus.Online);
+                console.log("Online");
+            }
+        })
+
+    }
+
+    public getNetworkType(): string {
+        return this.network.type
+    }
+
+    public getNetworkStatus(): Observable<ConnectionStatus> {
+        return this._status.asObservable();
+    }
+
+    private setStatus(status: ConnectionStatus) {
+        this.status = status;
+        this._status.next(this.status);
+    }
 }
