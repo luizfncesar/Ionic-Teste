@@ -1,29 +1,23 @@
 <ion-header>
   <ion-navbar>
     <ion-title>Home</ion-title>
+    <ion-buttons end> 
+      <button ion-button (click)="logOut()">Log out</button>
+    </ion-buttons>
   </ion-navbar>
 </ion-header>
 
-<ion-content padding>
-  <h2 text-center>You are logged in!</h2>
-
-  <div margin-top text-center>
-    <button ion-button (click)="logOut()">
-      Log out
-    </button>
-  </div>
+<ion-content padding class="home home--user">
+  <h2 text-center>Lista de Clientes</h2>
   <ion-list-header>
-    <ion-label>-</ion-label>
-    <ion-label>nome</ion-label>
-    <ion-label>data nascimento</ion-label>
-    <ion-label>email</ion-label>
+    <ion-label class="home__text home__text--label-null">-</ion-label>
+    <ion-label class="home__text home__text--label-user">nome</ion-label>
   </ion-list-header>
-  <ion-list>
-   <ion-item *ngFor="let user of usersList" (click)="buttonClick(user.id)">
-    <ion-label>{{user.id + 1}}</ion-label>
-    <ion-label>{{user.nome}}</ion-label>
-    <ion-label>{{user.dataNascimento}}</ion-label>
-    <ion-label>{{user.email}}</ion-label>
+  <ion-list class="home__area home__area--list">
+   <ion-item *ngFor="let user of usersList; let i = index" (click)="buttonClick(user.id)" class="home__content home__content--list-{{i}}">
+    <!-- <ion-label class="home__text home__text--id">{{user.id + 1}}</ion-label> -->
+    <ion-label class="home__text home__text--icon"> <img class="home__media" src="{{user.image}}" alt="icon"></ion-label>
+    <ion-label class="home__text home__text--user">{{user.nome}} <span>({{user.email}})</span></ion-label>
    </ion-item>
  </ion-list>
 
