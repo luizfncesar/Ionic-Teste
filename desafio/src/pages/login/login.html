@@ -1,31 +1,29 @@
-<ion-header>
-  <ion-navbar>
-    <ion-title>
-      Back4App Tutorial
-    </ion-title>
-  </ion-navbar>
-</ion-header>
+<ion-content padding class="landing landing--login">
+  <div class="landing__area">
+    <div class="login login--user">
+      <h4 class="login__text login__text--title" text-center margin-top>Insira sua credencias</h4>
 
-<ion-content padding>
-  <h4 text-center margin-top>Insert your credentials</h4>
+      <div class="login__area login__area--input">
+        <ion-item class="login__item">
+          <ion-label class="login__label" stacked>Username</ion-label>
+          <ion-input class="login__input" [(ngModel)]="username"></ion-input>
+        </ion-item>
 
-  <ion-item>
-    <ion-label stacked>Username</ion-label>
-    <ion-input [(ngModel)]="username"></ion-input>
-  </ion-item>
+        <ion-item>
+          <ion-label class="login__label" stacked>Password</ion-label>
+          <ion-input class="login__input" type="password" [(ngModel)]="password"></ion-input>
+        </ion-item>
+      </div>
 
-  <ion-item>
-    <ion-label stacked>Password</ion-label>
-    <ion-input type="password" [(ngModel)]="password"></ion-input>
-  </ion-item>
+      <div text-center margin-top class="login__button">
+        <!-- <button class="login__text--signup" ion-button margin-right (click)="signUp()">
+          SIGN UP
+        </button> -->
 
-  <div text-center margin-top>
-    <button ion-button margin-right (click)="signUp()">
-      SIGN UP
-    </button>
-
-    <button ion-button color="secondary" (click)="signIn()">
-      SIGN IN
-    </button>
+        <button ion-button class="login__text login__text--signin" color="secondary" (click)="signIn()">
+          SIGN IN
+        </button>
+      </div>
+    </div>
   </div>
 </ion-content>
