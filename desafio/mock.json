@@ -7,6 +7,7 @@
       "cpf": "21312312312",
       "email": "vinicius@teste.com.br",
       "senha": "123",
+      "image": "https://randomuser.me/api/portraits/men/24.jpg",
       "auth": true
     },
     {
@@ -16,6 +17,7 @@
       "cpf": "21312312777",
       "email": "joao@teste.com.br",
       "senha": "1234",
+      "image": "https://randomuser.me/api/portraits/men/65.jpg",
       "auth": false
     },
     {
@@ -25,6 +27,7 @@
       "cpf": "21312312000",
       "email": "carlos@teste.com.br",
       "senha": "123",
+      "image": "https://randomuser.me/api/portraits/men/80.jpg",
       "auth": false
     },
     {
@@ -34,6 +37,7 @@
       "cpf": "21312312233",
       "email": "maria@teste.com.br",
       "senha": "12345",
+      "image": "https://randomuser.me/api/portraits/women/91.jpg",
       "auth": false
     },
     {
@@ -43,6 +47,7 @@
       "cpf": "21312312555",
       "email": "pedro@teste.com.br",
       "senha": "12",
+      "image": "https://randomuser.me/api/portraits/men/8.jpg",
       "auth": false
     },
     {
@@ -52,6 +57,7 @@
       "cpf": "21312312909",
       "email": "luiz@teste.com.br",
       "senha": "111",
+      "image": "https://randomuser.me/api/portraits/men/47.jpg",
       "auth": false
     },
     {
@@ -61,6 +67,7 @@
       "cpf": "21312312909",
       "email": "luiz",
       "senha": "1",
+      "image": "https://randomuser.me/api/portraits/men/86.jpg",
       "auth": true
     }
   ]
