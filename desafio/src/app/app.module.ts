@@ -9,7 +9,6 @@ import { IonicStorageModule } from '@ionic/storage';
 import { Network } from '@ionic-native/network';
 import { MyApp } from './app.component';
 
-import { AboutPage } from '../pages/about/about';
 import { ProfilePage } from '../pages/profile/profile';
 import { HomePage } from '../pages/home/home';
 import { TabsPage } from '../pages/tabs/tabs';
@@ -23,7 +22,6 @@ import { UserService } from '../service/user.service';
 @NgModule({
   declarations: [
     MyApp,
-    AboutPage,
     ProfilePage,
     HomePage,
     TabsPage
@@ -37,7 +35,6 @@ import { UserService } from '../service/user.service';
   bootstrap: [IonicApp],
   entryComponents: [
     MyApp,
-    AboutPage,
     ProfilePage,
     HomePage,
     TabsPage
