@@ -45,44 +45,16 @@ export class MyApp {
       this.events.subscribe('network:online', () => {
           alert('network:online ==> '+this.network.type);        
       });
+      
 
-      this._getUsers().then(
-        (resp: any) => {
-          this.userService.events = resp;
-          let usersListStorage = JSON.parse(window.localStorage.getItem('users_data'));
-          let userId = this.userService.events[usersListStorage.id];
-          delete userId.senha;
-          if( usersListStorage.auth === true && userId.auth === true) {
-            window.localStorage.users_data = JSON.stringify(userId);
-            this.userService.login = userId;
-            this.userService.auth = true;
-            this.rootPage = (TabsPage);
-          } else {
-            this.userService.auth = false;
-            this.rootPage = 'LoginPage';
-          }
-        }
-      )
-        .catch(
-          (error: any) => {
-            // this.notify('Ocorreu um erro inesperado!', 'danger');
-            console.log(error)
-          }
-        )
+      if(localStorage.getItem('users_data')) {
+        this.rootPage = (TabsPage);
+      }else {
+        this.rootPage = 'LoginPage';
+      }
+
+    
         
-    });
-  }
-
-  private _getUsers() {
-    return new Promise((resolve, reject) => {
-      this.userService.getUsers().subscribe(
-        (resp: any) => {
-          resolve(resp);
-        },
-        error => {
-          reject(error);
-        }
-      );
     });
   }
   

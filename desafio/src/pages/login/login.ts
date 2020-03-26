@@ -37,7 +37,7 @@ export class LoginPage {
   }
 
   ionViewDidLoad() {
-    if( this.userService.auth === true) {
+    if(localStorage.getItem('users_data')) {
       this.navCtrl.setRoot(TabsPage);
     }else {
       this.showContent = true;
@@ -45,6 +45,24 @@ export class LoginPage {
   }
 
   signIn() {
+    debugger
+    const param = {
+      email: this.username,
+      senha: this.password
+    }
+
+    this.userService.postSessions(param).subscribe(
+      (resp: any) => {
+        debugger
+        console.log('teste');
+        this.showContent = false;
+      },
+      error => {
+        console.log('erro');
+      }
+    );
+
+
     this._getUsers().then(
       (resp: any) => {
         this.showContent = false;
@@ -96,6 +114,19 @@ export class LoginPage {
   }
 
   private _getUsers() {
+    return new Promise((resolve, reject) => {
+      this.userService.getUsers().subscribe(
+        (resp: any) => {
+          resolve(resp);
+        },
+        error => {
+          reject(error);
+        }
+      );
+    });
+  }
+
+  private _postUsers() {
     return new Promise((resolve, reject) => {
       this.userService.getUsers().subscribe(
         (resp: any) => {

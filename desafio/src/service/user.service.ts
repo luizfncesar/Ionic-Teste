@@ -12,7 +12,7 @@ export class UserService {
   ) { }
 
   public events: any;
-  public login: any;
+  public profile: any;
   public auth: Boolean = false;
   
   getUser(id: any) {
@@ -20,11 +20,15 @@ export class UserService {
   }
 
   getUsers() {
-    return this.http.get(`${environment.API}/usuarios`);
+    return this.http.get(`${environment.API}/users`);
   }
 
   postUser(body: Object) {
-    return this.http.post(`${environment.API}/usuarios`, body);
+    return this.http.post(`${environment.API}/users`, body);
+  }
+
+  postSessions(body: Object) {
+    return this.http.post(`${environment.API}/sessions`, body);
   }
 
   deleteUser(id: string) {
