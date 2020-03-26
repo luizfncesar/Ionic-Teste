@@ -5,8 +5,8 @@ Aplicativo simples para autenticar, exibir e detalhar usuários.
 - Lista de usuários
 - Perfil de usuário
 
--- Ionic
--- Angular
+- Ionic
+- Angular
 
 
 ## Dependências
