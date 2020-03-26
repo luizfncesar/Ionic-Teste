@@ -1,16 +1,16 @@
-<ion-content padding class="landing landing--login">
+<ion-content padding class="landing landing--login" *ngIf="showContent">
   <div class="landing__area">
     <div class="login login--user">
       <h4 class="login__text login__text--title" text-center margin-top>Insira sua credencias</h4>
 
       <div class="login__area login__area--input">
         <ion-item class="login__item">
-          <ion-label class="login__label" stacked>Username</ion-label>
+          <ion-label class="login__label" stacked>Email</ion-label>
           <ion-input class="login__input" [(ngModel)]="username"></ion-input>
         </ion-item>
 
         <ion-item>
-          <ion-label class="login__label" stacked>Password</ion-label>
+          <ion-label class="login__label" stacked>Senha</ion-label>
           <ion-input class="login__input" type="password" [(ngModel)]="password"></ion-input>
         </ion-item>
       </div>

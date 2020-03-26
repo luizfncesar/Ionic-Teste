@@ -12,6 +12,8 @@ export class UserService {
   ) { }
 
   public events: any;
+  public login: any;
+  public auth: Boolean = false;
   
   getUser(id: any) {
     return this.http.get(`${environment.API}/usuarios/${id}`);

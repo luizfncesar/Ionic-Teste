@@ -3,8 +3,6 @@ import { NavController, NavParams, ToastController} from 'ionic-angular';
 import { UserModel } from '../../models/user.model';
 import { UserService } from '../../service/user.service';
 
-// declare var UIkit: any;
-
 @Injectable()
 @Component({
   selector: 'page-home',
@@ -37,6 +35,15 @@ export class HomePage {
       }
   }
 
+  ionViewDidLoad() {
+    if( this.userService.auth === false) {
+      this.navCtrl.setRoot('LoginPage')
+    } else {
+      this.usersList = this.userService.events;
+      this.showContent = true;
+    }
+  }
+
   doInfinite(infiniteScroll) {
     console.log('Begin async operation');
 
@@ -48,10 +55,6 @@ export class HomePage {
       console.log('Async operation has ended');
       infiniteScroll.complete();
     }, 500);
-  }
-
-  ngOnInit() {
-    this.usersList = this.userService.events;
   }
 
   logOut() {
@@ -71,19 +74,20 @@ export class HomePage {
               this.count = resp.length;
               this.usersList = this.userService.events;
               window.localStorage.users_data = JSON.stringify(user);
+              this.userService.auth = false;
               this.showContent = true;
               this.navCtrl.setRoot('LoginPage')
-              // this.notify('Status alterado com sucesso!', 'success');
+              console.log('Status alterado com sucesso!', 'success');
             }
           )
             .catch(
               (error) => {
-                // this.notify('Ocorreu um erro inesperado!', 'danger');
+                console.log('Ocorreu um erro inesperado!', 'danger');
               }
             );
         },
         error => {
-          // this.notify('Ocorreu um erro inesperado!', 'danger');
+          console.log('Ocorreu um erro inesperado!', 'danger');
         }
       );
     } else {
@@ -107,14 +111,5 @@ export class HomePage {
       );
     });
   }
-
-  // private notify(msg: string, status: string) {
-  //   UIkit.notification({
-  //     message: msg,
-  //     status: status,
-  //     pos: 'top-center',
-  //     timeout: 2000
-  //   });
-  // }
 
 }

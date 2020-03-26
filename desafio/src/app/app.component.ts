@@ -15,6 +15,7 @@ import { NetworkService } from '../service/network.service';
 })
 export class MyApp {
   rootPage:any = 'LoginPage';
+  showContent: Boolean = false;
 
   constructor(
     platform: Platform, 
@@ -53,8 +54,11 @@ export class MyApp {
           delete userId.senha;
           if( usersListStorage.auth === true && userId.auth === true) {
             window.localStorage.users_data = JSON.stringify(userId);
+            this.userService.login = userId;
+            this.userService.auth = true;
             this.rootPage = (TabsPage);
           } else {
+            this.userService.auth = false;
             this.rootPage = 'LoginPage';
           }
         }

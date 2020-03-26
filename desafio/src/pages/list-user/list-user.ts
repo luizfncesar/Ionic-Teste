@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import { UserService } from '../../service/user.service';
+import { UserModel } from '../../models/user.model';
 
 
 @IonicPage()
@@ -9,23 +10,26 @@ import { UserService } from '../../service/user.service';
   templateUrl: 'list-user.html',
 })
 export class ListUserPage {
-  user: any;
+  user: Array<UserModel[]>;
+  showContent: Boolean = false;
 
   constructor(
     public navCtrl: NavController,
     public navParams: NavParams,
     private userService: UserService
-  ) {
-
-  }
+  ) { }
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad ListUserPage');
+    let idPage = this.navParams.get('id');
+    if( !this.userService.auth && !idPage) {
+      this.navCtrl.setRoot('LoginPage')
+    } else {
+      this.user = this.userService.events[idPage];
+      this.showContent = true;
+    }
   }
 
-  ngOnInit() {
-    let idPage = this.navParams.get('id');
-    this.user = this.userService.events[idPage];
-  }
+  ngOnInit() { }
 
 }

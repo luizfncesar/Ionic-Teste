@@ -10,7 +10,7 @@ import { Network } from '@ionic-native/network';
 import { MyApp } from './app.component';
 
 import { AboutPage } from '../pages/about/about';
-import { ContactPage } from '../pages/contact/contact';
+import { ProfilePage } from '../pages/profile/profile';
 import { HomePage } from '../pages/home/home';
 import { TabsPage } from '../pages/tabs/tabs';
 
@@ -24,7 +24,7 @@ import { UserService } from '../service/user.service';
   declarations: [
     MyApp,
     AboutPage,
-    ContactPage,
+    ProfilePage,
     HomePage,
     TabsPage
   ],
@@ -38,7 +38,7 @@ import { UserService } from '../service/user.service';
   entryComponents: [
     MyApp,
     AboutPage,
-    ContactPage,
+    ProfilePage,
     HomePage,
     TabsPage
   ],

@@ -4,17 +4,6 @@ import { UserModel } from '../../models/user.model';
 import { UserService } from '../../service/user.service';
 import { TabsPage } from '../tabs/tabs';
 
-// import Parse from 'parse';
-
-// declare var UIkit: any;
-
-
-/**
- * Generated class for the LoginPage page.
- *
- * See https://ionicframework.com/docs/components/#navigation for more info on
- * Ionic pages and navigation.
- */
 
 @Injectable()
 
@@ -48,19 +37,20 @@ export class LoginPage {
   }
 
   ionViewDidLoad() {
-    console.log('ionViewDidLoad LoginPage');
+    if( this.userService.auth === true) {
+      this.navCtrl.setRoot(TabsPage);
+    }else {
+      this.showContent = true;
+    }
   }
-
-  // signUp() {
-  // }
 
   signIn() {
     this._getUsers().then(
       (resp: any) => {
+        this.showContent = false;
         this.userService.events = resp;
         this.count = resp.length;
         this.usersList = this.userService.events;
-        this.showContent = true;
         const param = {
           type: 'signin',
           username: this.username,
@@ -71,26 +61,26 @@ export class LoginPage {
           window.localStorage.users_data = JSON.stringify(user);
           this.userService.updateUser(user.id, user).subscribe(
             () => {
-              this.showContent = false;
               this._getUsers().then(
                 (resp: any) => {
                   this.userService.events = resp;
                   this.count = resp.length;
                   this.usersList = this.userService.events;
+                  this.userService.login = user;
                   this.showContent = true;
-                  console.log('login correto');
+                  this.userService.auth = true;
                   this.navCtrl.setRoot(TabsPage);
-                  // this.notify('Status alterado com sucesso!', 'success');
+                  console.log('Status alterado com sucesso!', 'success');
                 }
               )
                 .catch(
                   (error) => {
-                    // this.notify('Ocorreu um erro inesperado!', 'danger');
+                    console.log('Ocorreu um erro inesperado!', 'danger');
                   }
                 );
             },
             error => {
-              // this.notify('Ocorreu um erro inesperado!', 'danger');
+              console.log('Ocorreu um erro inesperado!', 'danger');
             }
           );
         } else {
@@ -117,14 +107,5 @@ export class LoginPage {
       );
     });
   }
-
-  // private notify(msg: string, status: string) {
-  //   UIkit.notification({
-  //     message: msg,
-  //     status: status,
-  //     pos: 'top-center',
-  //     timeout: 2000
-  //   });
-  // }
 
 }
