@@ -1,0 +1,31 @@
+
+<ion-header class="landing landing--header">
+  <ion-navbar class="landing__area">
+    <ion-title>Perfil</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding class="landing landing--profile" *ngIf="showContent">
+  <div class="landing__area">
+    <div class="profile profile--perfil">
+      <div class="profile__content">
+        <div class="profile__image">
+          <div class="profile__icon"><img class="profile__media" src="{{user.image}}" alt=""></div>
+        </div>
+      </div>
+      <ion-list class="profile__area">
+        <div class="profile__content profile__content--info">
+          <ion-item class="profile__content">
+            <ion-label class="profile__text profile__text--name"><span>Nome:</span> {{user.nome}}</ion-label>
+          </ion-item>
+          <ion-item class="profile__content">
+            <ion-label class="profile__text profile__text--date"><span>Data Nascimento:</span> {{user.dataNascimento}}</ion-label>
+          </ion-item>
+          <ion-item class="profile__content">
+            <ion-label class="profile__text profile__text--email"><span>Email:</span> {{user.email}}</ion-label>
+          </ion-item>
+        </div>
+      </ion-list>
+    </div>
+  </div>
+</ion-content>
