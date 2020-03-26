@@ -45,7 +45,7 @@ export class MyApp {
       this.events.subscribe('network:online', () => {
           alert('network:online ==> '+this.network.type);        
       });
-  
+
       this._getUsers().then(
         (resp: any) => {
           this.userService.events = resp;
