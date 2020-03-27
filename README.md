@@ -5,15 +5,12 @@ Aplicativo simples para autenticar, exibir e detalhar usuários.
 - Lista de usuários
 - Perfil de usuário
 
+O APK näo está acessando o banco de dados do NODE, apenas retorna se está ONLINE ou OFFLINE da Internet.
+Localmente é possível acessar o Banco.
+
 - Ionic
 - Angular
-
-
-## Dependências
-
- - json-server
-
-  
+- NodeJS
 
 ## Dependências de desenvolvimento
 
@@ -21,10 +18,10 @@ Aplicativo simples para autenticar, exibir e detalhar usuários.
 
 
 ## Rodar o projeto para desenvolvimento
-  
-```$ ionic serve```
 
-```$ json-server --watch mock.json```
+```$ cd desafioApi/yarn dev```
+  
+```$ cd desafio/ionic serve```
 
 
 ## História
