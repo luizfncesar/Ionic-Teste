@@ -37,24 +37,6 @@ export class MyApp {
       this.notifier = notifier;
 
       this.networkService.initializeNetworkEvents();
-      // Offline event
-      this.events.subscribe('network:offline', () => {
-          alert('network:offline ==> '+this.network.type);
-          this.notifier.show({
-            message: "Sem acesso a Internet!",
-            type: "warning",
-          });  
-      });
-
-      // Online event
-      this.events.subscribe('network:online', () => {
-          alert('network:online ==> '+this.network.type);
-          this.notifier.show({
-            message: "Com acesso a Internet!",
-            type: "warning",
-          });          
-      });
-      
 
       if(localStorage.getItem('users_data')) {
         this.rootPage = (TabsPage);

@@ -1,44 +1,51 @@
 import { Injectable } from '@angular/core';
 import { AlertController, Events } from 'ionic-angular'
 import { Network } from '@ionic-native/network'
-import { BehaviorSubject } from 'rxjs/BehaviorSubject';
-import { Observable } from 'rxjs/Observable';
 import { HttpClient } from '@angular/common/http';
+import { Dialogs } from '@ionic-native/dialogs/ngx';
+import NetworkHeartService from 'network-heart-service';
 
-
-export enum ConnectionStatusEnum {
-    Online,
-    Offline
-}
 
 @Injectable()
 export class NetworkService {
 
-    public previousStatus: ConnectionStatusEnum;
-    private _status: BehaviorSubject<ConnectionStatusEnum> = new BehaviorSubject(null);
-
+    isConnected: Boolean = false;
 
     constructor(
             public http: HttpClient,
             public alertCtrl: AlertController, 
             public network: Network,
-            public eventCtrl: Events) {
+            public eventCtrl: Events,
+            public dialogs: Dialogs) {
         console.log('Hello NetworkProvider Provider');
-        this.previousStatus = ConnectionStatusEnum.Online;
+
+        debugger
+
+        this.networkConnection();
+
     }
+
+    async networkConnection() {
+        const isOnline = await NetworkHeartService.isOnline();
+        console.log(isOnline);
+        if(isOnline) {
+            this.isConnected = true;
+            this.dialogs.alert('Nós temos uma'+this.network.type+'conexão, woohoo!');
+        } else {
+            this.isConnected = false;
+            this.dialogs.alert('Internet está desconnectada:-()');
+        }
+    }
+    
 
     public initializeNetworkEvents(): void {
         this.network.onDisconnect().subscribe(() => {
-            if (this.previousStatus === ConnectionStatusEnum.Online) {
-                this.eventCtrl.publish('network:offline');
-            }
-            this.previousStatus = ConnectionStatusEnum.Offline;
+            this.dialogs.alert('Internet está desconnectada:-()');
         });
         this.network.onConnect().subscribe(() => {
-            if (this.previousStatus === ConnectionStatusEnum.Offline) {
-                this.eventCtrl.publish('network:online');
-            }
-            this.previousStatus = ConnectionStatusEnum.Online;
+            setTimeout(() => {
+                this.dialogs.alert('Nós temos uma'+this.network.type+'conexão, woohoo!');
+            }, 2000);
         });
     }
 

@@ -16,6 +16,7 @@ import { TabsPage } from '../pages/tabs/tabs';
 import { NetworkService } from '../service/network.service';
 import { UserService } from '../service/user.service';
 import { NotifierModule } from "angular-notifier";
+import { Dialogs } from '@ionic-native/dialogs/ngx';
 
 
 
@@ -42,11 +43,12 @@ import { NotifierModule } from "angular-notifier";
     TabsPage
   ],
   providers: [
-    Network,
-    NetworkService,
     StatusBar,
     SplashScreen,
     UserService,
+    Network,
+    Dialogs,
+    NetworkService,
     {provide: ErrorHandler, useClass: IonicErrorHandler}
   ]
 })

@@ -2,6 +2,7 @@ import { Component, Injectable } from '@angular/core';
 import {IonicPage, NavController, NavParams, ToastController, Modal, ModalController, ModalOptions} from 'ionic-angular';
 import { UserModel } from '../../models/user.model';
 import { UserService } from '../../service/user.service';
+import { NetworkService } from '../../service/network.service';
 import { TabsPage } from '../tabs/tabs';
 import { NotifierService } from "angular-notifier";
 
@@ -28,6 +29,7 @@ export class LoginPage {
       public toastCtrl: ToastController,
       public navParams: NavParams,
       private userService: UserService,
+      private networkService: NetworkService,
       private modal: ModalController,
       notifier: NotifierService
     ) {
@@ -35,6 +37,18 @@ export class LoginPage {
   }
 
   ionViewDidLoad() {
+    if(!this.networkService.isConnected) {
+      this.notifier.show({
+        message: "Sem acesso a internet",
+        type: "error",
+      });
+    }else {
+      this.notifier.show({
+        message: "Está com acesso a internet",
+        type: "success",
+      });
+    }
+
     if(localStorage.getItem('users_data')) {
       this.navCtrl.setRoot(TabsPage);
     }else {
