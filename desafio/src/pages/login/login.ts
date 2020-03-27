@@ -61,10 +61,9 @@ export class LoginPage {
       },
       error => {
         this.notifier.show({
-          message: "Ocorreu um erro inesperado!",
+          message: "Usuário ou senha inválido!",
           type: "error",
         });
-        console.log('Ocorreu um erro inesperado!');
       }
     );
   }

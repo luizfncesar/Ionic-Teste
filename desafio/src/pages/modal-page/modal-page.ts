@@ -22,7 +22,7 @@ export class ModalPage {
       cpf: ['', Validators.required],
       email: ['', Validators.required],
       senha: ['', Validators.required],
-      image: [this.randomImage, Validators.required]
+      image: ['']
     });
   }
 
@@ -31,11 +31,14 @@ export class ModalPage {
   }
   
   logForm() {
+    debugger;
+    this.register.value.image = this.randomImage;
     console.log(this.register.value)
     this.view.dismiss(this.register.value);
   }
 
   getRandomImage(type){
+    debugger
     this.isValid = true;
     let number = Math.floor(Math.random() * 30) + 0;
     if(type === 'man') {
