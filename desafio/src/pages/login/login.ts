@@ -3,6 +3,8 @@ import {IonicPage, NavController, NavParams, ToastController, Modal, ModalContro
 import { UserModel } from '../../models/user.model';
 import { UserService } from '../../service/user.service';
 import { TabsPage } from '../tabs/tabs';
+import { NotifierService } from "angular-notifier";
+
 
 
 @Injectable()
@@ -17,6 +19,8 @@ export class LoginPage {
   usersList: Array<UserModel[]>;
   email: string;
   password: string;
+  private notifier: NotifierService;
+
 
 
   constructor(
@@ -24,8 +28,10 @@ export class LoginPage {
       public toastCtrl: ToastController,
       public navParams: NavParams,
       private userService: UserService,
-      private modal: ModalController
+      private modal: ModalController,
+      notifier: NotifierService
     ) {
+      this.notifier = notifier;
   }
 
   ionViewDidLoad() {
@@ -54,13 +60,16 @@ export class LoginPage {
         this.navCtrl.setRoot(TabsPage);
       },
       error => {
-        console.log('erro');
+        this.notifier.show({
+          message: "Ocorreu um erro inesperado!",
+          type: "error",
+        });
+        console.log('Ocorreu um erro inesperado!');
       }
     );
   }
 
   openModal() {
-    debugger;
     const myModalOptions: ModalOptions = {
       enableBackdropDismiss: false
     };
@@ -72,10 +81,16 @@ export class LoginPage {
     myModal.onWillDismiss((data) => {
       this.userService.postUsers(data).subscribe(
         (resp: any) => {
-          console.log('registrado')
+          this.notifier.show({
+            message: "Registrado!",
+            type: "success",
+          });
         },
         error => {
-          console.log('erro');
+          this.notifier.show({
+            message: "Ocorreu ao se registrar!",
+            type: "error",
+          });
         }
       );
     });

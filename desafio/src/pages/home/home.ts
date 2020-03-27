@@ -1,7 +1,8 @@
 import { Component, Injectable } from '@angular/core';
-import { NavController, NavParams, ToastController} from 'ionic-angular';
+import { NavController, NavParams} from 'ionic-angular';
 import { UserModel } from '../../models/user.model';
 import { UserService } from '../../service/user.service';
+import { NotifierService } from "angular-notifier";
 
 @Injectable()
 @Component({
@@ -13,15 +14,18 @@ export class HomePage {
   showContent: boolean = false;
   usersList: Array<UserModel[]>;
   items = [];
+  private notifier: NotifierService;
   
 
   constructor(
       public navCtrl: NavController,
       public navParams: NavParams,
-      public toastCtrl: ToastController,
       private userService: UserService,
+      notifier: NotifierService
+      
     ) {
-
+      this.notifier = notifier;
+      
       for (let i = 0; i < 3; i++) {
         this.items.push( this.items.length );
       }
@@ -48,6 +52,10 @@ export class HomePage {
     )
       .catch(
         (error) => {
+          this.notifier.show({
+            message: "Ocorreu um erro inesperado!",
+            type: "error",
+          });
           console.log('Ocorreu um erro inesperado!', 'danger');
         }
       );
@@ -67,25 +75,19 @@ export class HomePage {
   }
 
   logOut() {
-    debugger
     localStorage.clear();
     this.navCtrl.setRoot('LoginPage')
   }
 
   buttonClick(id) {
-    debugger
     this.navCtrl.push('ListUserPage', { id: id });
   }
 
   doInfinite(infiniteScroll) {
-    console.log('Begin async operation');
-
     setTimeout(() => {
       for (let i = 0; i < 3; i++) {
         this.items.push( this.userService.events[i] );
       }
-
-      console.log('Async operation has ended');
       infiniteScroll.complete();
     }, 500);
   }

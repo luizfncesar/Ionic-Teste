@@ -35,11 +35,16 @@ page-modal-page {
         line-height: 1.2;
     }
 
+    .item-md  {
+        padding-left: 0;
+    }
+
     .modal__text--label {
         font-size: 1.25rem;
         text-transform: uppercase;
         font-weight: 600;
         letter-spacing: 0.02em;
+        max-width: 130px;
     }
 
     .modal__text--man,
@@ -60,21 +65,23 @@ page-modal-page {
             background: rgb(141, 125, 141);
         }
     }
-
+    
     .modal__text--woman {
         background: #81057b;
-
-        &:hover {
-            background: #9e0096;
-        }
     }
 
     .modal__text--man {
         background: #110b6d;
+    }
 
-        &:hover {
-            background: #190fa8;
-        }
+    .button-md:hover:not(.disable-hover),
+    .modal__text--man:hover {
+        background: #190fa8;
+    }
+
+    .button-md-secondary:hover:not(.disable-hover),
+    .modal__text--woman:hover {
+        background: #9e0096;
     }
 
 }

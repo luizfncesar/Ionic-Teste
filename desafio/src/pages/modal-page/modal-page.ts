@@ -1,6 +1,5 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavParams, ViewController } from 'ionic-angular';
-import { UserModel } from '../../models/user.model';
 import {Validators, FormBuilder, FormGroup } from '@angular/forms';
 
 @IonicPage()

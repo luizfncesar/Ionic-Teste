@@ -41,9 +41,13 @@
           <ion-label class="modal__text modal__text--label">E-Mail:</ion-label>
           <ion-input class="modal__input" type="text" formControlName="email"></ion-input>
         </ion-item>
-        <ion-item class="modal__item">
+        <!-- <ion-item class="modal__item">
           <ion-label class="modal__text modal__text--label">Data Nascimento:</ion-label>
           <ion-input class="modal__input" type="text" formControlName="dataNascimento"></ion-input>
+        </ion-item> -->
+        <ion-item>
+          <ion-label class="modal__text modal__text--label">Data Nascimento:</ion-label>
+          <ion-datetime displayFormat="DD/MM/YYYY" formControlName="dataNascimento"></ion-datetime>
         </ion-item>
         <ion-item class="modal__item">
           <ion-label class="modal__text modal__text--label">Senha:</ion-label>

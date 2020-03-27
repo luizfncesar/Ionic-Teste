@@ -21,7 +21,6 @@ export class ListUserPage {
 
 
   ionViewDidLoad() {
-    debugger
     let idPage = this.navParams.get('id');
     if(!localStorage.getItem('users_data') || !idPage) {
       this.navCtrl.setRoot('LoginPage');

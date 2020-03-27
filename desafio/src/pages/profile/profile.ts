@@ -18,7 +18,6 @@ export class ProfilePage {
   }
 
   ionViewDidLoad() {
-    debugger
     if(!localStorage.getItem('users_data')) {
       this.navCtrl.setRoot('LoginPage')
     } else {

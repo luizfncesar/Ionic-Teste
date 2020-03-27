@@ -15,6 +15,7 @@ import { TabsPage } from '../pages/tabs/tabs';
 
 import { NetworkService } from '../service/network.service';
 import { UserService } from '../service/user.service';
+import { NotifierModule } from "angular-notifier";
 
 
 
@@ -31,6 +32,7 @@ import { UserService } from '../service/user.service';
     IonicModule.forRoot(MyApp),
     HttpClientModule,
     IonicStorageModule.forRoot(),
+    NotifierModule
   ],
   bootstrap: [IonicApp],
   entryComponents: [
