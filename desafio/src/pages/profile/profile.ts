@@ -18,10 +18,11 @@ export class ProfilePage {
   }
 
   ionViewDidLoad() {
-    if( this.userService.auth === false) {
+    debugger
+    if(!localStorage.getItem('users_data')) {
       this.navCtrl.setRoot('LoginPage')
     } else {
-      this.user = this.userService.login;
+      this.user = this.userService.profile ? this.userService.profile : JSON.parse(localStorage.getItem('users_data'));
       this.showContent = true;
     }
   }

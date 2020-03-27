@@ -2,7 +2,7 @@ import connection from '../../database';
 
 class UsersController {
   async show(req, res) {
-    const users = await connection('users').select('*');
+    const users = await connection('users').select({id: 'id', nome: 'nome', dataNascimento: 'dataNascimento', email: 'email', image: 'image'});
     return res.json(users);
   }
 

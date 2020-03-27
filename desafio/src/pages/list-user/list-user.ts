@@ -19,13 +19,14 @@ export class ListUserPage {
     private userService: UserService
   ) { }
 
+
   ionViewDidLoad() {
-    console.log('ionViewDidLoad ListUserPage');
+    debugger
     let idPage = this.navParams.get('id');
-    if( !this.userService.auth && !idPage) {
-      this.navCtrl.setRoot('LoginPage')
-    } else {
-      this.user = this.userService.events[idPage];
+    if(!localStorage.getItem('users_data') || !idPage) {
+      this.navCtrl.setRoot('LoginPage');
+    }else {
+      this.user = this.userService.events[idPage - 1];
       this.showContent = true;
     }
   }
