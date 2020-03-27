@@ -17,7 +17,6 @@
       </ion-list-header>
       <ion-list class="home__area home__area--list">
         <ion-item *ngFor="let user of usersList; let i = index" (click)="buttonClick(user.id)" class="home__content home__content--list-{{i}}">
-          <!-- <ion-label class="home__text home__text--id">{{user.id + 1}}</ion-label> -->
           <ion-label class="home__text home__text--icon"> <img class="home__media" src="{{user.image}}" alt="icon"></ion-label>
           <ion-label class="home__text home__text--user">{{user.nome}} <span>({{user.email}})</span></ion-label>
         </ion-item>
