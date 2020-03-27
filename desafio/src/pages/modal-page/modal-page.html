@@ -1,0 +1,57 @@
+<!--
+  Generated template for the ModalPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+
+  <ion-navbar>
+    <ion-title>Cadastro</ion-title>
+    <ion-buttons end>
+      <button ion-button (click)="closeModal()">Close</button>
+    </ion-buttons>
+  </ion-navbar>
+
+</ion-header>
+
+<ion-content padding class="landing landing--modal" *ngIf="showContent">
+  <div class="landing__area">
+    <div class="modal modal--user">
+      <form class="modal__form" [formGroup]="register" (ngSubmit)="logForm()">
+        <div class="modal__content">
+          <div class="modal__image">
+            <div class="modal__icon"><img class="modal__media" src="{{randomImage}}" alt=""></div>
+          </div>
+        </div>
+        <div text-center margin-top class="modal__button">
+          <div class="modal__text  modal__text--man" ion-button margin-right (click)="getRandomImage('man')">homem</div>
+          <div ion-button class="modal__text modal__text--woman" color="secondary" (click)="getRandomImage('woman')">mulher</div>
+        </div>
+
+        <ion-item class="modal__item">
+          <ion-label class="modal__text modal__text--label">Nome:</ion-label>
+          <ion-input class="modal__input" type="text" formControlName="nome"></ion-input>
+        </ion-item>
+        <ion-item class="modal__item">
+          <ion-label class="modal__text modal__text--label">CPF:</ion-label>
+          <ion-input class="modal__input" type="text" formControlName="cpf"></ion-input>
+        </ion-item>
+        <ion-item class="modal__item">
+          <ion-label class="modal__text modal__text--label">E-Mail:</ion-label>
+          <ion-input class="modal__input" type="text" formControlName="email"></ion-input>
+        </ion-item>
+        <ion-item class="modal__item">
+          <ion-label class="modal__text modal__text--label">Data Nascimento:</ion-label>
+          <ion-input class="modal__input" type="text" formControlName="dataNascimento"></ion-input>
+        </ion-item>
+        <ion-item class="modal__item">
+          <ion-label class="modal__text modal__text--label">Senha:</ion-label>
+          <ion-input class="modal__input" type="password" formControlName="senha"></ion-input>
+        </ion-item>
+        <button class="modal__text modal__text--register" ion-button type="submit" [disabled]="!register.valid || !isValid" >Registrar</button>
+      </form>
+    </div>
+    
+  </div>
+</ion-content>

@@ -1,0 +1,80 @@
+page-modal-page {
+
+    .modal--user {
+        .modal__item {
+            padding-left: 0;
+        }
+    }
+
+    .modal__content,
+    .modal__image {
+        display: block;
+        width: 100%;
+    }
+
+    .modal__icon {
+        width: 100%;
+        max-width: 160px;
+        min-height: 152px;
+        overflow: hidden;
+        border-radius: 100%;
+        border: 4px solid #f3f3f3;
+        margin: 10px auto;
+        box-shadow: 0px 0px 6px 1px #33333394;
+    }
+
+    .modal__media {
+        display: block;
+        width: 100%;
+    }
+
+    .modal__text {
+        font-size: 1rem;
+        font-family: "Roboto", "Helvetica Neue", sans-serif;
+        font-weight: 500;
+        line-height: 1.2;
+    }
+
+    .modal__text--label {
+        font-size: 1.25rem;
+        text-transform: uppercase;
+        font-weight: 600;
+        letter-spacing: 0.02em;
+    }
+
+    .modal__text--man,
+    .modal__text--woman,
+    .modal__text--register {
+        background: #503bcb;
+        color: #fff;
+        border-radius: 2px;
+        overflow: hidden;
+        height: 3.6rem;
+        font-size: 1.4rem;
+        font-weight: 500;
+        text-transform: uppercase;
+        margin: 2rem 0;
+        padding: 0 1.1em;
+
+        &:hover {
+            background: rgb(141, 125, 141);
+        }
+    }
+
+    .modal__text--woman {
+        background: #81057b;
+
+        &:hover {
+            background: #9e0096;
+        }
+    }
+
+    .modal__text--man {
+        background: #110b6d;
+
+        &:hover {
+            background: #190fa8;
+        }
+    }
+
+}
