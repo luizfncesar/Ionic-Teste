@@ -30,10 +30,8 @@ export class NetworkService {
         console.log(isOnline);
         if(isOnline) {
             this.isConnected = true;
-            this.dialogs.alert('Nós temos uma'+this.network.type+'conexão, woohoo!');
         } else {
             this.isConnected = false;
-            this.dialogs.alert('Internet está desconnectada:-()');
         }
     }
     

@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavParams, ViewController } from 'ionic-angular';
+import { IonicPage, ViewController } from 'ionic-angular';
 import {Validators, FormBuilder, FormGroup } from '@angular/forms';
 
 @IonicPage()
@@ -14,7 +14,7 @@ export class ModalPage {
   isValid: Boolean = false;
   randomImage: string = 'https://d1nhio0ox7pgb.cloudfront.net/_img/o_collection_png/green_dark_grey/256x256/plain/user.png';
 
-  constructor(private navParams: NavParams, private view: ViewController, private formBuilder: FormBuilder) {
+  constructor(private view: ViewController, private formBuilder: FormBuilder) {
 
     this.register = this.formBuilder.group({
       nome: ['', Validators.required],
