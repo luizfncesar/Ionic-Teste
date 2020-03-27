@@ -7,7 +7,7 @@
       <div class="login__area login__area--input">
         <ion-item class="login__item">
           <ion-label class="login__label" stacked>Email</ion-label>
-          <ion-input class="login__input" [(ngModel)]="username"></ion-input>
+          <ion-input class="login__input" [(ngModel)]="email"></ion-input>
         </ion-item>
 
         <ion-item>
@@ -17,14 +17,15 @@
       </div>
 
       <div text-center margin-top class="login__button">
-        <!-- <button class="login__text--signup" ion-button margin-right (click)="signUp()">
-          SIGN UP
-        </button> -->
+        <button class="login__text  login__text--signup" ion-button margin-right (click)="signUp()">
+          Registrar
+        </button>
 
         <button ion-button class="login__text login__text--signin" color="secondary" (click)="signIn()">
-          SIGN IN
+          Entrar
         </button>
       </div>
     </div>
+    
   </div>
 </ion-content>
