@@ -3,7 +3,6 @@ import { Platform, Events, ToastController } from 'ionic-angular';
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 import { TabsPage } from '../pages/tabs/tabs';
-import { Network } from '@ionic-native/network';
 import { NetworkService } from '../service/network.service';
 import { NotifierService } from "angular-notifier";
 
@@ -23,7 +22,6 @@ export class MyApp {
     platform: Platform, 
     statusBar: StatusBar, 
     splashScreen: SplashScreen,
-    private network: Network,
     public events: Events,
     public networkService: NetworkService,
     public toast: ToastController,
